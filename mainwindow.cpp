@@ -6,7 +6,6 @@
 #include "Sw_Device.h"
 #include "Sw_ISO14443A-3.h"
 #include "Sw_Mf_Classic.h"
-#include "Tools.h"
 #include "TypeDefs.h"
 
 MainWindow::MainWindow(QWidget *parent)
