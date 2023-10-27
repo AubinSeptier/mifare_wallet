@@ -13,11 +13,70 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <widget class="QPushButton" name="updateButton">
+   <property name="geometry">
+    <rect>
+     <x>680</x>
+     <y>180</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Update</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>160</y>
+     <width>113</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_2">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>200</y>
+     <width>113</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="nameLabel">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>160</y>
+     <width>41</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Name</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="surnameLabel">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>200</y>
+     <width>49</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Surname</string>
+   </property>
+  </widget>
   <widget class="QPushButton" name="Connect">
    <property name="geometry">
     <rect>
-     <x>360</x>
-     <y>300</y>
+     <x>70</x>
+     <y>460</y>
      <width>75</width>
      <height>24</height>
     </rect>
@@ -26,6 +85,255 @@
     <string>Connect</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="Disconnect">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>460</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Disconnect</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="decrementSpin">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>320</y>
+     <width>42</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="incrementSpin">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>440</y>
+     <width>42</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="unitNumberBox">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>280</y>
+     <width>51</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="payButton">
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>300</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Pay</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="loadButton">
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>440</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Load</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="unitNumberIncrementBox">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>440</y>
+     <width>151</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Unit Number to increment</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="unitNumberDecrementBox">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>320</y>
+     <width>151</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Unit Number to decrement</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="unitNumberLabel">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>280</y>
+     <width>71</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Unit Number</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="identityBox">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>129</y>
+     <width>321</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Identity</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="decrementBox">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>260</y>
+     <width>331</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Decrement the wallet</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="incrementBox">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>400</y>
+     <width>331</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Increment the wallet</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="mainTitle">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>20</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700;&quot;&gt;Wallet&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Quit">
+   <property name="geometry">
+    <rect>
+     <x>680</x>
+     <y>550</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>660</x>
+     <y>10</y>
+     <width>131</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>assets/Odalid_Logo_120x60.jpg</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>660</x>
+     <y>80</y>
+     <width>111</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Change Your Future</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="readerName">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>60</y>
+     <width>171</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ConnectCard">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>90</y>
+     <width>101</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Connect Card</string>
+   </property>
+  </widget>
+  <zorder>incrementBox</zorder>
+  <zorder>decrementBox</zorder>
+  <zorder>identityBox</zorder>
+  <zorder>updateButton</zorder>
+  <zorder>lineEdit</zorder>
+  <zorder>lineEdit_2</zorder>
+  <zorder>nameLabel</zorder>
+  <zorder>surnameLabel</zorder>
+  <zorder>Connect</zorder>
+  <zorder>Disconnect</zorder>
+  <zorder>decrementSpin</zorder>
+  <zorder>incrementSpin</zorder>
+  <zorder>unitNumberBox</zorder>
+  <zorder>payButton</zorder>
+  <zorder>loadButton</zorder>
+  <zorder>unitNumberIncrementBox</zorder>
+  <zorder>unitNumberDecrementBox</zorder>
+  <zorder>unitNumberLabel</zorder>
+  <zorder>mainTitle</zorder>
+  <zorder>Quit</zorder>
+  <zorder>label</zorder>
+  <zorder>label_2</zorder>
+  <zorder>readerName</zorder>
+  <zorder>ConnectCard</zorder>
  </widget>
  <resources/>
  <connections/>

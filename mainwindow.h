@@ -17,6 +17,9 @@ public:
 
 private slots:
     void on_Connect_clicked();
+    void on_Disconnect_clicked();
+    void on_Quit_clicked();
+    void on_ConnectCard_clicked();
 
 private:
     Ui::MainWindow *ui;
