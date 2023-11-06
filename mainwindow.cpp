@@ -59,11 +59,84 @@ void MainWindow::on_Quit_clicked(){
 }
 
 void MainWindow::on_ConnectCard_clicked(){
+    uint8_t atq[2];
+    uint8_t sak[1];
+    uint8_t uid[12];
+    uint16_t uid_len = 12;
     int16_t status = MI_OK;
     status = LEDBuzzer(&MyReader, BUZZER_ON);
     DELAYS_MS(2);
     status = LEDBuzzer(&MyReader, BUZZER_OFF);
-    status = LEDBuzzer(&MyReader, LED_GREEN_ON);
+    status = LEDBuzzer(&MyReader, LED_RED_ON);
+    status = ISO14443_3_A_PollCard(&MyReader, atq, sak, uid, &uid_len);
+    qDebug() << status << "aaa";
 
+    status = readCard();
+    if(status != MI_OK){
+        ui->errorLabel->setText(GetErrorMessage(status));
+    }
+
+}
+
+void MainWindow::on_Pay_clicked(){
+    int16_t status = MI_OK;
+    status = LEDBuzzer(&MyReader, BUZZER_ON);
+    DELAYS_MS(2);
+    status = LEDBuzzer(&MyReader, BUZZER_OFF);
+    DELAYS_MS(100);
+    status = LEDBuzzer(&MyReader, BUZZER_ON);
+    DELAYS_MS(2);
+    status = LEDBuzzer(&MyReader, BUZZER_OFF);
+}
+
+
+int16_t MainWindow::readCard(){
+    int16_t status = MI_OK;
+    uint8_t data[240] = {0};
+
+    //reading identity
+    uint8_t sect = 2;
+    memset(data, 0x00, 240);
+    status = Mf_Classic_Read_Sector(&MyReader, TRUE, sect, data, AuthKeyA, 2);
+
+    if(status != MI_OK){
+        ui->errorLabel->setText(GetErrorMessage(status));
+        return status;
+    }
+    else{
+        uint8_t bloc_count = 3;
+        for (uint8_t bloc = 0;bloc < bloc_count ;bloc++ ) {
+            QString name = "";
+            for(uint8_t offset = 0;offset < 16; offset++){
+                if(data[16*bloc + offset] >= ' '){
+                    char character = static_cast<char>(data[16*bloc + offset]);
+                    name += character;
+                }
+        }
+            if(bloc==2)
+            ui->surnameEdit->setText(name);
+            if(bloc==1)
+            ui->nameEdit->setText(name);
+
+        }
+    }
+
+
+    //reading units
+    uint32_t value;
+    sect = 3;
+
+    uint8_t bloc = 13;
+    status = Mf_Classic_Read_Value(&MyReader, TRUE, bloc, &value,AuthKeyA, 3);
+    if(status != MI_OK){
+        ui->errorLabel->setText(GetErrorMessage(status));
+        return status;
+    }
+    else {
+        qDebug() << value ;
+        ui->unitNumberBox->setText(QString::number(value));
+    }
+
+    return status;
 }
 

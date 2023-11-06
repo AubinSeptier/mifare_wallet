@@ -20,8 +20,10 @@ private slots:
     void on_Disconnect_clicked();
     void on_Quit_clicked();
     void on_ConnectCard_clicked();
+    void on_Pay_clicked();
 
 private:
     Ui::MainWindow *ui;
+    int16_t readCard();
 };
 #endif // MAINWINDOW_H

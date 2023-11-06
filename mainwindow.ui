@@ -26,7 +26,7 @@
     <string>Update</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="nameEdit">
    <property name="geometry">
     <rect>
      <x>560</x>
@@ -36,7 +36,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="surnameEdit">
    <property name="geometry">
     <rect>
      <x>560</x>
@@ -128,7 +128,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="payButton">
+  <widget class="QPushButton" name="Pay">
    <property name="geometry">
     <rect>
      <x>700</x>
@@ -310,12 +310,28 @@
     <string>Connect Card</string>
    </property>
   </widget>
+  <widget class="QLabel" name="errorLabel">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>530</y>
+     <width>211</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(255, 0, 0);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <zorder>incrementBox</zorder>
   <zorder>decrementBox</zorder>
   <zorder>identityBox</zorder>
   <zorder>updateButton</zorder>
-  <zorder>lineEdit</zorder>
-  <zorder>lineEdit_2</zorder>
+  <zorder>nameEdit</zorder>
+  <zorder>surnameEdit</zorder>
   <zorder>nameLabel</zorder>
   <zorder>surnameLabel</zorder>
   <zorder>Connect</zorder>
@@ -323,7 +339,7 @@
   <zorder>decrementSpin</zorder>
   <zorder>incrementSpin</zorder>
   <zorder>unitNumberBox</zorder>
-  <zorder>payButton</zorder>
+  <zorder>Pay</zorder>
   <zorder>loadButton</zorder>
   <zorder>unitNumberIncrementBox</zorder>
   <zorder>unitNumberDecrementBox</zorder>
@@ -334,6 +350,7 @@
   <zorder>label_2</zorder>
   <zorder>readerName</zorder>
   <zorder>ConnectCard</zorder>
+  <zorder>errorLabel</zorder>
  </widget>
  <resources/>
  <connections/>
