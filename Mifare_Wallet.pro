@@ -27,3 +27,9 @@ unix|win32: LIBS += -L$$PWD/LIB/ -lODALID_Education
 
 INCLUDEPATH += $$PWD/LIB
 DEPENDPATH += $$PWD/LIB
+
+RESOURCES += \
+    resources.qrc
+
+DISTFILES += \
+    assets/Odalid_Logo_120x60.jpg

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/assets">
+        <file>assets/Odalid_Logo_120x60.jpg</file>
+        <file>assets/Mifare_Logo.jpg</file>
+    </qresource>
+</RCC>

@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QDebug>
+#include <QPixmap>
 
 #include "MfErrNo.h"
 #include "Sw_Device.h"
@@ -15,6 +16,14 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->readerName->setText("No reader connected");
+    QPixmap pixmap_logo(":/assets/assets/Odalid_Logo_120x60.jpg");
+    int logo_width = ui->logo->width();
+    int logo_height = ui->logo->height();
+    ui->logo->setPixmap(pixmap_logo.scaled(logo_width, logo_height, Qt::KeepAspectRatio));
+    QPixmap pixmap_mifare(":/assets/assets/Mifare_Logo.jpg");
+    int mifare_width = ui->mifare->width();
+    int mifare_height = ui->mifare->height();
+    ui->mifare->setPixmap(pixmap_mifare.scaled(mifare_width, mifare_height, Qt::KeepAspectRatio));
     ui->readerName->update();
 }
 
@@ -67,13 +76,16 @@ void MainWindow::on_ConnectCard_clicked(){
     status = LEDBuzzer(&MyReader, BUZZER_ON);
     DELAYS_MS(2);
     status = LEDBuzzer(&MyReader, BUZZER_OFF);
-    status = LEDBuzzer(&MyReader, LED_RED_ON);
     status = ISO14443_3_A_PollCard(&MyReader, atq, sak, uid, &uid_len);
     qDebug() << status << "aaa";
 
     status = readCard();
     if(status != MI_OK){
         ui->errorLabel->setText(GetErrorMessage(status));
+    }
+    else {
+        status = LEDBuzzer(&MyReader, LED_RED_ON);
+        ui->errorLabel->setText("");
     }
 
 }

@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QWidget" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -236,10 +239,13 @@
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>20</y>
-     <width>71</width>
-     <height>31</height>
+     <y>230</y>
+     <width>81</width>
+     <height>41</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
    </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700;&quot;&gt;Wallet&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -258,28 +264,12 @@
     <string>Quit</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>660</x>
-     <y>10</y>
-     <width>131</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap>assets/Odalid_Logo_120x60.jpg</pixmap>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
      <x>660</x>
      <y>80</y>
-     <width>111</width>
+     <width>101</width>
      <height>20</height>
     </rect>
    </property>
@@ -291,9 +281,9 @@
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>60</y>
-     <width>171</width>
-     <height>31</height>
+     <y>280</y>
+     <width>201</width>
+     <height>41</height>
     </rect>
    </property>
   </widget>
@@ -315,8 +305,8 @@
     <rect>
      <x>50</x>
      <y>530</y>
-     <width>211</width>
-     <height>20</height>
+     <width>251</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -326,6 +316,36 @@
     <string/>
    </property>
   </widget>
+  <widget class="QLabel" name="logo">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>20</y>
+     <width>121</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="mifare">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>30</y>
+     <width>371</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>mifare</zorder>
   <zorder>incrementBox</zorder>
   <zorder>decrementBox</zorder>
   <zorder>identityBox</zorder>
@@ -346,11 +366,11 @@
   <zorder>unitNumberLabel</zorder>
   <zorder>mainTitle</zorder>
   <zorder>Quit</zorder>
-  <zorder>label</zorder>
   <zorder>label_2</zorder>
   <zorder>readerName</zorder>
   <zorder>ConnectCard</zorder>
   <zorder>errorLabel</zorder>
+  <zorder>logo</zorder>
  </widget>
  <resources/>
  <connections/>
