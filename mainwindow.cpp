@@ -56,8 +56,6 @@ void MainWindow::on_Disconnect_clicked(){
     status = CloseCOM(&MyReader);
     ui->readerName->setText("No reader connected");
     ui->readerName->update();
-
-
 }
 
 void MainWindow::on_Quit_clicked(){
@@ -90,7 +88,41 @@ void MainWindow::on_ConnectCard_clicked(){
 
 }
 
+void MainWindow::on_Update_clicked(){
+    int16_t status = MI_OK;
+    status = LEDBuzzer(&MyReader, BUZZER_ON);
+    DELAYS_MS(2);
+    status = LEDBuzzer(&MyReader, BUZZER_OFF);
+    DELAYS_MS(100);
+    /*
+    QString surname = ui->surnameEdit->text();
+    QString name = ui->nameEdit->text();
+    status = Mf_Classic_Write_Value(&MyReader, TRUE, 2, value, AuthKeyB, 2);
+    if(status != MI_OK){
+        ui->errorLabel->setText(GetErrorMessage(status));
+        return status;
+    }
+    else {
+
+    }
+    */
+    status = LEDBuzzer(&MyReader, BUZZER_ON);
+    DELAYS_MS(2);
+    status = LEDBuzzer(&MyReader, BUZZER_OFF);
+}
+
 void MainWindow::on_Pay_clicked(){
+    int16_t status = MI_OK;
+    status = LEDBuzzer(&MyReader, BUZZER_ON);
+    DELAYS_MS(2);
+    status = LEDBuzzer(&MyReader, BUZZER_OFF);
+    DELAYS_MS(100);
+    status = LEDBuzzer(&MyReader, BUZZER_ON);
+    DELAYS_MS(2);
+    status = LEDBuzzer(&MyReader, BUZZER_OFF);
+}
+
+void MainWindow::on_Load_clicked(){
     int16_t status = MI_OK;
     status = LEDBuzzer(&MyReader, BUZZER_ON);
     DELAYS_MS(2);
