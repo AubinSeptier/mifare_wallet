@@ -50,7 +50,7 @@ void MainWindow::on_Connect_clicked(){
 }
 
 void MainWindow::on_Disconnect_clicked(){
-
+    ui->errorLabel->setText("");
     int16_t status = MI_OK;
     status = LEDBuzzer(&MyReader,LED_OFF);
     status = CloseCOM(&MyReader);
@@ -59,6 +59,7 @@ void MainWindow::on_Disconnect_clicked(){
 }
 
 void MainWindow::on_Quit_clicked(){
+    ui->errorLabel->setText("");
     int16_t status = MI_OK;
     status = LEDBuzzer(&MyReader,LED_OFF);
     status = CloseCOM(&MyReader);
@@ -89,30 +90,46 @@ void MainWindow::on_ConnectCard_clicked(){
 }
 
 void MainWindow::on_Update_clicked(){
+    ui->errorLabel->setText("");
     int16_t status = MI_OK;
     status = LEDBuzzer(&MyReader, BUZZER_ON);
     DELAYS_MS(2);
     status = LEDBuzzer(&MyReader, BUZZER_OFF);
     DELAYS_MS(100);
-    /*
-    QString surname = ui->surnameEdit->text();
-    QString name = ui->nameEdit->text();
-    status = Mf_Classic_Write_Value(&MyReader, TRUE, 2, value, AuthKeyB, 2);
+    char DataIn[16];
+
+    //surnameEdit
+    strncpy(DataIn, ui->surnameEdit->text().toUtf8().data(), 16);
+    auto data = (uint8_t*)DataIn;
+    status = Mf_Classic_Write_Block(&MyReader, TRUE, 10, data, AuthKeyB, 2);
     if(status != MI_OK){
         ui->errorLabel->setText(GetErrorMessage(status));
-        return status;
     }
-    else {
 
+    //nameEdit
+    strncpy(DataIn, ui->nameEdit->text().toUtf8().data(), 16);
+    data = (uint8_t*)DataIn;
+
+    status = Mf_Classic_Write_Block(&MyReader, TRUE, 9, data, AuthKeyB, 2);
+    if(status != MI_OK){
+        ui->errorLabel->setText(GetErrorMessage(status));
     }
-    */
+
+
     status = LEDBuzzer(&MyReader, BUZZER_ON);
     DELAYS_MS(2);
     status = LEDBuzzer(&MyReader, BUZZER_OFF);
 }
 
 void MainWindow::on_Pay_clicked(){
+    ui->errorLabel->setText("");
     int16_t status = MI_OK;
+    int32_t value =ui->decrementSpin->value();
+    qDebug() << ui->unitNumberBox->toPlainText().toInt();
+    if(value > ui->unitNumberBox->toPlainText().toInt()){
+        ui->errorLabel->setText("balance too low");
+        return;
+    }
     status = LEDBuzzer(&MyReader, BUZZER_ON);
     DELAYS_MS(2);
     status = LEDBuzzer(&MyReader, BUZZER_OFF);
@@ -120,9 +137,20 @@ void MainWindow::on_Pay_clicked(){
     status = LEDBuzzer(&MyReader, BUZZER_ON);
     DELAYS_MS(2);
     status = LEDBuzzer(&MyReader, BUZZER_OFF);
+
+
+
+    status = Mf_Classic_Decrement_Value(&MyReader, TRUE, 13,value,13, AuthKeyB,3);
+    if(status!= MI_OK){
+        ui->errorLabel->setText(GetErrorMessage(status));
+        return;
+    }
+    ui->unitNumberBox->setText(QString::number(ui->unitNumberBox->toPlainText().toInt() - value));
+    ui->unitNumberBox->update();
 }
 
 void MainWindow::on_Load_clicked(){
+    ui->errorLabel->setText("");
     int16_t status = MI_OK;
     status = LEDBuzzer(&MyReader, BUZZER_ON);
     DELAYS_MS(2);
@@ -131,6 +159,16 @@ void MainWindow::on_Load_clicked(){
     status = LEDBuzzer(&MyReader, BUZZER_ON);
     DELAYS_MS(2);
     status = LEDBuzzer(&MyReader, BUZZER_OFF);
+
+    int32_t value =ui->incrementSpin->value();
+
+
+    status = Mf_Classic_Increment_Value(&MyReader, TRUE, 13,value,13, AuthKeyB,3);
+    if(status!= MI_OK){
+        ui->errorLabel->setText(GetErrorMessage(status));
+    }
+    ui->unitNumberBox->setText(QString::number(ui->unitNumberBox->toPlainText().toInt() + value));
+    ui->unitNumberBox->update();
 }
 
 
